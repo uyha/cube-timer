@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs28ylytu4wrk"]
+[gd_scene load_steps=2 format=3 uid="uid://bs28ylytu4wrk"]
 
-[ext_resource type="Script" path="res://control.gd" id="1_1fkss"]
 [ext_resource type="Script" path="res://timer.gd" id="2_go03j"]
 
 [node name="Control" type="Control"]
@@ -10,11 +9,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_1fkss")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Timer" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "0.00"
 script = ExtResource("2_go03j")

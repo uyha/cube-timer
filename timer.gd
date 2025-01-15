@@ -1,23 +1,27 @@
 extends Node
 
+enum TimerState {stopped, running, stopping}
+var timer_state: TimerState = TimerState.stopped
 var total: float = 0
-var running_timer: bool = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if !running_timer:
+	if timer_state != TimerState.running:
 		return
 
 	total += delta
 	self.text = str(total).pad_decimals(3)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("toggle_timer"):
-		if running_timer:
-			total = 0
-		running_timer = !running_timer
+	match timer_state:
+		TimerState.stopped:
+			if event.is_action_released("toggle_timer"):
+				total = 0
+				timer_state = TimerState.running
+
+		TimerState.running:
+			if event.is_action_pressed("toggle_timer"):
+				timer_state = TimerState.stopping
+
+		TimerState.stopping:
+			if event.is_action_released("toggle_timer"):
+					timer_state = TimerState.stopped
