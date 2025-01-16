@@ -8,8 +8,6 @@ enum Inspection {normal, late, dnf}
 var inspect_time: float = 0
 var solving_time: float = 0
 
-func _ready() -> void:
-	print(Config.has_inspection)
 
 func _process(delta: float) -> void:
 	if timer_state == TimerState.inspecting:
