@@ -20,7 +20,6 @@ func _input(event: InputEvent) -> void:
 	match timer_state:
 		TimerState.stopped:
 			if event.is_action_released("toggle_timer"):
-
 				if Config.has_inspection:
 					inspect_time = 15
 					timer_state = TimerState.inspecting
@@ -54,7 +53,7 @@ func inspecting(delta: float) -> void:
 
 func timing(delta: float) -> void:
 	solving_time += delta
-	self.text = str(solving_time).pad_decimals(3)
+	self.text = str(solving_time).pad_decimals(2)
 
 func inspect_result() -> Inspection:
 	if inspect_time > 0:
